@@ -7,8 +7,6 @@
     <div class="row grid-margin"><div class="col-12">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novo_usuario">
             Novo Usuário
-        </button>
-
           @include('pages.usuarios._modalAdd')
     </div>
 </div>
