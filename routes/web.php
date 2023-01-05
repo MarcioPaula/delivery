@@ -11,8 +11,25 @@
 |
 */
 
+//use App\Http\Controllers\Auth;
+use App\Http\Controllers\DashboardController;
+
 Route::get('/', function () {
-    return view('dashboard');
+    return view('pages.conectar.conectar');
+});
+
+Route::post('/usuarios/add', [DashboardController::class, 'adicionar'])->name('usuarios.add');
+
+Route::group(['prefix' => 'menu'], function(){
+    Route::get('conectar', function () { return view('pages.conectar.conectar'); });
+    Route::get('pedidos', function () { return view('pages.pedidos.pedidos'); });
+    Route::get('dashboard', function () { return view('pages.dashboard.dashboard'); });
+    Route::get('usuarios', function () { return view('pages.usuarios.usuarios'); })->name('usuario.add');
+    Route::get('produtos', function () { return view('pages.produtos.produtos'); });
+    Route::get('categorias', function () { return view('pages.categoria.categorias'); });
+    Route::get('promocoes', function () { return view('pages.promocoes.promocoes'); });
+    Route::get('pagamentos', function () { return view('pages.pagamentos.pagamentos'); });
+    Route::get('fretes', function () { return view('pages.fretes.fretes'); });
 });
 
 // Route::get('/','DashboardController@index');
@@ -93,6 +110,8 @@ Route::group(['prefix' => 'maps'], function(){
 });
 
 Route::group(['prefix' => 'user-pages'], function(){
+    //Route::get('/login', [LoginController::class, 'login'])->middleware('guest')->name('login');
+
     Route::get('login', function () { return view('pages.user-pages.login'); });
     Route::get('login-2', function () { return view('pages.user-pages.login-2'); });
     Route::get('multi-step-login', function () { return view('pages.user-pages.multi-step-login'); });
