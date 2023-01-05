@@ -1,4 +1,4 @@
-<div class="modal1 fade" id="editar_promocao" tabindex="-1" role="dialog" aria-labelledby="editar_promocaoLabel" aria-hidden="true">
+<div class="modal fade" id="editar_promocao" tabindex="-1" role="dialog" aria-labelledby="editar_promocaoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -30,5 +30,6 @@
                     </div>
                 </form>
             </div>
+        </div>
     </div>
 </div>

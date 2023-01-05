@@ -40,8 +40,9 @@
                                      <td class="text-right">
                                         <button type="button" class="btn btn-primary ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_promocao">Editar</button>
                                         <button type="button" class="btn btn-primary ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_promocao">Excluir</button>
-                                        @include('pages.promocoes._modalEliminar')
-                                        @include('pages.promocoes._modalEditar')
+                                         @include('pages.promocoes._modalEditar')
+                                         @include('pages.promocoes._modalEliminar')
+
                                     </td>
                                     </tr>
                                     <tr role="row" class="even">
