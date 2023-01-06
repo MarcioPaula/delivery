@@ -89,5 +89,11 @@ function show_class($path) {
           <span class="menu-title">Fretes</span>
         </a>
       </li>
+      <li class="nav-item {{ active_class(['/suporte/suporte']) }}">
+        <a class="nav-link" href="{{ url('/menu/suporte') }}">
+          <i class="menu-icon mdi mdi-wrench"></i>
+          <span class="menu-title">Suporte</span>
+        </a>
+      </li>
   </ul>
 </nav>

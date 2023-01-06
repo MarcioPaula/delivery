@@ -15,7 +15,7 @@
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
-    return view('pages.conectar.conectar');
+    return view('pages.user-pages.login');
 });
 
 Route::post('/usuarios/add', [DashboardController::class, 'adicionar'])->name('usuarios.add');
@@ -30,6 +30,7 @@ Route::group(['prefix' => 'menu'], function(){
     Route::get('promocoes', function () { return view('pages.promocoes.promocoes'); });
     Route::get('pagamentos', function () { return view('pages.pagamentos.pagamentos'); });
     Route::get('fretes', function () { return view('pages.fretes.fretes'); });
+    Route::get('suporte', function () { return view('pages.suporte.suporte'); });
 });
 
 // Route::get('/','DashboardController@index');

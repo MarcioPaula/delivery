@@ -4,14 +4,14 @@
 <h4>Criação de Usuários</h4>
 
 <div class="card-body">
-    <div class="row grid-margin"><div class="col-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novo_usuario">
-            Novo Usuário
-          @include('pages.usuarios._modalAdd')
+    <div class="row grid-margin">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#novo_usuarios">Novo Usuário</button>
+            @include('pages.usuarios._modalAdd')
+        </div>
     </div>
 </div>
-
-<br><br>
+<br>
 <div class="row">
     <div class="col-12">
         <div class="table-responsive">
@@ -40,10 +40,12 @@
                                         <label class="badge badge-info" _msthash="1298453" _msttexthash="113074">Em espera</label>
                                     </td>
                                      <td class="text-right">
-                                        <button class="btn btn-light">
-                                            <i class="mdi mdi-eye text-primary"></i><font _mstmutation="1" _msthash="1362530" _msttexthash="61152">Editar </font></button>
-                                            <button class="btn btn-light"><i class="mdi mdi-close text-danger"></i><font _mstmutation="1" _msthash="1362712" _msttexthash="95888">Excluir </font></button>
-                                        </td>
+                                        <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_usuarios">Editar</button>
+                                        <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_usuarios">Excluir</button>
+                                         @include('pages.usuarios._modalEditar')
+                                         @include('pages.usuarios._modalEliminar')
+
+                                    </td>
                                     </tr>
                                     <tr role="row" class="even">
                                         <td class="sorting_1" _msthash="896858" _msttexthash="34424">WD-62</td>
@@ -55,11 +57,12 @@
                                             <label class="badge badge-danger" _msthash="1298454" _msttexthash="113243">Pendente</label>
                                         </td>
                                         <td class="text-right">
-                                            <button class="btn btn-light"><i class="mdi mdi-eye text-primary">
-                                                </i><font _mstmutation="1" _msthash="1362531" _msttexthash="61152">Editar </font></button>
-                                                <button class="btn btn-light"><i class="mdi mdi-close text-danger"></i><font _mstmutation="1" _msthash="1362713" _msttexthash="95888">Excluir</font></button>
-                                            </td>
-                                        </tr>
+                                            <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_usuarios">Editar</button>
+                                            <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_usuarios">Excluir</button>
+                                             @include('pages.usuarios._modalEditar')
+                                             @include('pages.usuarios._modalEliminar')
+
+                                        </td>
                                         <tr role="row" class="odd">
                                             <td class="sorting_1" _msthash="896859" _msttexthash="34567">WD-63</td>
                                             <td _msthash="896989" _msttexthash="30394">Sam</td>
@@ -70,8 +73,11 @@
                                                 <label class="badge badge-success" _msthash="1298455" _msttexthash="90207">Fechado</label>
                                             </td>
                                             <td class="text-right">
-                                                <button class="btn btn-light"><i class="mdi mdi-eye text-primary"></i><font _mstmutation="1" _msthash="1362532" _msttexthash="61152">Editar</font></button>
-                                                <button class="btn btn-light"><i class="mdi mdi-close text-danger"></i><font _mstmutation="1" _msthash="1362714" _msttexthash="95888">Excluir</font></button>
+                                                <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_usuarios">Editar</button>
+                                                <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_usuarios">Excluir</button>
+                                                 @include('pages.usuarios._modalEditar')
+                                                 @include('pages.usuarios._modalEliminar')
+
                                             </td>
                                         </tr>
                                         <tr role="row" class="even">
@@ -84,8 +90,11 @@
                                                 <label class="badge badge-warning" _msthash="1298456" _msttexthash="59397">Abrir</label>
                                             </td>
                                             <td class="text-right">
-                                                <button class="btn btn-light"><i class="mdi mdi-eye text-primary"></i><font _mstmutation="1" _msthash="1362533" _msttexthash="61152">Editar</font></button>
-                                                <button class="btn btn-light"><i class="mdi mdi-close text-danger"></i><font _mstmutation="1" _msthash="1362715" _msttexthash="95888">Excluir</font></button>
+                                                <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_usuarios">Editar</button>
+                                                <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_usuarios">Excluir</button>
+                                                 @include('pages.usuarios._modalEditar')
+                                                 @include('pages.usuarios._modalEliminar')
+
                                             </td>
                                         </tr>
                                         <tr role="row" class="odd">
@@ -98,8 +107,11 @@
                                                 <label class="badge badge-success" _msthash="1298457" _msttexthash="90207">Fechado</label>
                                             </td>
                                             <td class="text-right">
-                                                <button class="btn btn-light"><i class="mdi mdi-eye text-primary"></i><font _mstmutation="1" _msthash="1362534" _msttexthash="61152">Editar</font></button>
-                                                <button class="btn btn-light"><i class="mdi mdi-close text-danger"></i><font _mstmutation="1" _msthash="1362716" _msttexthash="95888">Excluir</font></button>
+                                                <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_usuarios">Editar</button>
+                                                <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_usuarios">Excluir</button>
+                                                 @include('pages.usuarios._modalEditar')
+                                                 @include('pages.usuarios._modalEliminar')
+
                                             </td>
                                         </tr>
                                     </tbody>
@@ -111,5 +123,4 @@
             </div>
         </div>
     </div>
-
 @endsection

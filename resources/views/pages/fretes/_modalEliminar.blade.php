@@ -1,8 +1,8 @@
-<div class="modal fade" id="excluir_usuarios" tabindex="-1" role="dialog" aria-labelledby="excluir_usuariosLabel" aria-hidden="true">
+<div class="modal fade" id="excluir_frete" tabindex="-1" role="dialog" aria-labelledby="excluir_freteLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="excluir_usuariosLabel">Excluir Usuários</h5>
+                <h5 class="modal-title" id="excluir_freteLabel">Excluir Frete</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

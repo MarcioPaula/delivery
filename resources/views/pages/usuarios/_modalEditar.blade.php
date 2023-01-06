@@ -1,8 +1,8 @@
-<div class="modalEditar fade" id="editar_usuario" tabindex="-1" role="dialog" aria-labelledby="editar_usuarioLabel" aria-hidden="true">
+<div class="modal fade" id="editar_usuarios" tabindex="-1" role="dialog" aria-labelledby="editar_usuariosLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editar_usuarioLabel">Novo Usuário</h5>
+                <h5 class="modal-title" id="editar_usuariosLabel">Editar Usuários</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,7 +13,7 @@
 
                     <div class="col-md-12" >
                         <div class="form-group">
-                            <label for="product">Nome do Usuário</label>
+                            <label for="product">Nome</label>
                             <input type="text" name="nome" autocomplete="off" required placeholder="Nome Usuário" class="form-control"/>
                         </div>
                     </div>
@@ -27,15 +27,26 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="code">Senha</label>
-                            <input type="text" name="senha" autocomplete="off" required placeholder="Senha" class="form-control"  />
+                            <label for="product">Senha</label>
+                            <input type="text" name="senha" autocomplete="off" required placeholder="Senha" class="form-control money2"  />
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" required>
+                          <label class="form-check-label" for="flexCheckDefault1">
+                            Administrador
+                          </label>
+                        </div>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="button" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
             </div>
+        </div>
     </div>
 </div>
