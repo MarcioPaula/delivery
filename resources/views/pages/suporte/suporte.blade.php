@@ -1,16 +1,19 @@
 @extends('layout.master')
 @section('content')
 
+<div>
+<h4>Suporte ao Cliente</h4>
+</div>
 <br>
 <div class="container">
     <div class="row">
 
         <div class="col-md-6 jumbotron mx-auto">
-            <form action="{{ url('/suporte') }}" method="POST">
+            <form action="{{ url('/menu/suporte') }}" method="POST">
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <h2>Suporte ao Cliente</h2>
+                    <h3>Enviar E-mail</h3>
                 </div>
 
                 @if(count($errors) > 0)
@@ -62,6 +65,7 @@
                     <label for="mensagem">Mensagem</label>
                     <textarea name="mensagem" class="form-control" cols="10" rows="5" placeholder="Digite sua Mensagem"></textarea>
                 </div>
+                <br>
 
                 <button type="submite" class="btn btn-primary">Enviar</button>
 

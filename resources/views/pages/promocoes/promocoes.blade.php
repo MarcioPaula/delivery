@@ -1,18 +1,61 @@
 @extends('layout.master')
 @section('content')
 
-<h4>Criação das Promoções</h4>
+<div class="row mt-4 mx-4">
+    <div class="col-12">
 
-<div class="card-body">
-    <div class="row grid-margin">
-        <div class="col-12">
-            <button type="button" class="btn btn-primary ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#nova_promocao">Nova Promoção</button>
-            @include('pages.promocoes._modalAdd')
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h6>Promoção</h6>
+                <br>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nova_promocao">Nova Promoção</button>
+                @include('pages.promocoes._modalAdd')
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <br class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nome</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CEP</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Valor</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Editar | Excluir</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{-- @foreach($registros as $registro) --}}
+                        <tr>
+                            <td>
+                                <P class="mb-0 text-sm">f</P>
+                            </td>
+                            <td>
+                                <p class="text-sm font-weight-bold mb-0">f</p>
+                            </td>
+                            <td>
+                                <p class="text-sm font-weight-bold mb-0">f</p>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-sm text-uppercase font-weight-bold mb-0">f</p>
+                            </td>
+                            <td class="align-middle text-end">
+                                <div class="d-flex px-3 py-1 justify-content-center align-items-center">
+                                    <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_promocao">Editar</button>
+                                    <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_promocao">Excluir</button>
+                                </div>
+                            </td>
+                        </tr>
+                        @include('pages.promocoes._modalEditar')
+                        @include('pages.promocoes._modalEliminar')
+                    {{-- @endforeach --}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-<br>
-<div class="row">
+</div>
+{{-- <div class="row">
     <div class="col-12">
         <div class="table-responsive">
             <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -123,5 +166,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

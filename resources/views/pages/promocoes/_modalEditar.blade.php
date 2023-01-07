@@ -14,19 +14,18 @@
                     <div class="col-md-12" >
                         <div class="form-group">
                             <label for="product">Título Promoção</label>
-                            <input type="text" name="titulo" autocomplete="off" required placeholder="Nome Promoção" class="form-control"/>
+                            <input type="text" name="titulo" autocomplete="off" required placeholder="Título Promoção" class="form-control"/>
                         </div>
                     </div>
 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="product">Nome Promoção</label>
-                            <input type="text" name="nome" autocomplete="off" required placeholder="Nome Promoção" class="form-control money2"  />
-                        </div>
+                    <div class="col-md-12" >
+                        <label class="col-form-label" _msthash="2855450" _msttexthash="193947">Descrição</label>
+                        <textarea id="maxlength-textarea" maxlength="100" rows="2" placeholder="Digite aqui todas informações da Promoção" class="form-control" _mstplaceholder="1495351"></textarea>
                     </div>
+                    <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary">Salvar</button>
+                        <input type="submit" class="btn btn-primary">Salvar</input>
                     </div>
                 </form>
             </div>

@@ -32,7 +32,9 @@
                     <label for="client-token"></label><br>
                     <input rows="3" id="client-token" placeholder="Nome Departamento">
                     <br><br>
-                    <button class="add-client-btn btn-primary">Gerar QRCode</button>
+
+                    <button class="add-client-btn btn-primary">Conectar</button>
+
                 </div>
             </div>
         </center>
