@@ -18,6 +18,7 @@ class Fretes extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->string('valor');
+            $table->string('cod_estabel');
         });
     }
 

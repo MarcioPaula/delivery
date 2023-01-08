@@ -13,22 +13,25 @@
 
                     <div class="col-md-12" >
                         <div class="form-group">
-                            <label for="product">Nome</label>
+                            <label for="usuario">Nome</label>
                             <input type="text" name="name" autocomplete="off" required placeholder="Nome" class="form-control"/>
                         </div>
                     </div>
+
                     <div class="col-md-12" >
                         <div class="form-group">
-                            <label for="product">E-mail</label>
-                            <input type="text" name="email" autocomplete="off" required placeholder="E-mail" class="form-control"/>
+                            <label for="usuario">E-mail</label>
+                            <input type="email" name="email" autocomplete="off" required placeholder="E-mail" class="form-control"/>
                         </div>
                     </div>
+
                     <div class="col-md-12" >
                         <div class="form-group">
-                            <label for="product">Senha</label>
+                            <label for="usuario">Senha</label>
                             <input type="text" name="password" autocomplete="off" required placeholder="Senha" class="form-control"/>
                         </div>
                     </div>
+
                     <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

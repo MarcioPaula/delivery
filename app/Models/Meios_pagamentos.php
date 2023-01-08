@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fretes extends Model
+class Meios_pagamentos extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nome',
-        'valor',
-        'cod_estabel',
+        'status',
+        'cod_estabel'
     ];
 }

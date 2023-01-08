@@ -26,7 +26,7 @@
                     <div class="col-md-12" >
                         <div class="form-group">
                             <label for="product">Senha</label>
-                            <input type="text" name="password" autocomplete="off" required placeholder="Senha" class="form-control" value="{{isset($registro->password)? $registro->password : ''}}"/>
+                            <input type="password" name="password" autocomplete="off" required placeholder="Senha" class="form-control" value="{{isset($registro->password)? $registro->password : ''}}"/>
                         </div>
                     </div>
                     <br>

@@ -7,6 +7,7 @@ use App\Models\Fretes;
 use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Auth;
 
 class FretesController extends Controller
 {
@@ -24,6 +25,12 @@ class FretesController extends Controller
 
         $dados = $request->all();
 
+        $dados =  array(
+            'nome' => $request->nome,
+            'valor' => $request->valor,
+            'cod_estabel' => Auth::user()->cod_estabel,
+        );
+
         Fretes::create($dados);
 
         return redirect()->back();
@@ -35,6 +42,12 @@ class FretesController extends Controller
         $frete = Fretes::find($id);
 
         $dados = $request->all();
+
+        $dados =  array(
+            'nome' => $request->nome,
+            'valor' => $request->valor,
+            'cod_estabel' => Auth::user()->cod_estabel,
+        );
 
         $frete->update($dados);
         return redirect()->back();

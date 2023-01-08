@@ -30,7 +30,7 @@ class UsuarioController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'id_empresa' => Auth::user()->id_empresa,
+            'cod_estabel' => Auth::user()->cod_estabel,
 
         );
 
@@ -46,6 +46,13 @@ class UsuarioController extends Controller
         $usuarios = User::find($id);
 
         $dados = $request->all();
+
+        $dados =  array(
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'cod_estabel' => Auth::user()->cod_estabel,
+        );
 
         $usuarios->update($dados);
 

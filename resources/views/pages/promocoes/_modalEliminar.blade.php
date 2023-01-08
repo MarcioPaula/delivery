@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
 
-                Tem certeza que deja Excluir a Promoção: {{$registro->id}}?
+                Tem certeza que deja Excluir a Promoção: {{$registro->titulo}}?
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

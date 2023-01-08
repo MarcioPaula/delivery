@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
 {
@@ -22,6 +23,11 @@ class CategoriaController extends Controller
     public function adicionar(Request $request){
 
         $dados = $request->all();
+
+        $dados =  array(
+            'nome_categoria' => $request->nome_categoria,
+            'cod_estabel' => Auth::user()->cod_estabel,
+        );
 
         Categoria::create($dados);
 

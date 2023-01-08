@@ -13,14 +13,14 @@
 
                     <div class="col-md-12" >
                         <div class="form-group">
-                            <label for="product">Título Promoção</label>
-                            <input type="text" name="titulo" autocomplete="off" required placeholder="Título Promoção" class="form-control"/>
+                            <label for="product">Título</label>
+                            <input type="text" name="titulo" autocomplete="off" required placeholder="Título" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="col-md-12" >
                         <label for="product">Descrição</label>
-                        <input type="text" name="descricao"  autocomplete="off" required placeholder="Digite aqui todas informações da Promoção" class="form-control">
+                        <input type="text" name="descricao"  autocomplete="off" required placeholder="Digite aqui todas as Informações da Promoção" class="form-control">
                     </div>
                     <br>
                     <div class="modal-footer">

@@ -28,7 +28,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            $empresas = DB::table('Empresas')->where('id', '=', Auth::user()->id_empresa)->get();
+            $empresas = DB::table('Estabelecimento')->where('id', '=', Auth::user()->cod_estabel)->get();
 
             $nome_usuario = Auth::user()->name;
 

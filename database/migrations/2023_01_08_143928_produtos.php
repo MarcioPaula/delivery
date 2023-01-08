@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Promocoes extends Migration
+class Produtos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,17 @@ class Promocoes extends Migration
      */
     public function up()
     {
-        //Cria tabela Promocoes
-        Schema::create('Promocoes', function (Blueprint $table) {
+        //Criação Produtos
+        Schema::create('Produtos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('titulo');
+            $table->string('nome');
             $table->string('descricao');
+            $table->string('valor_unitario');
             $table->string('cod_estabel');
+            $table->string('imagem')->nullable();
+            $table->string('id_pedido');
+            $table->string('id_categoria');
         });
     }
 
@@ -30,7 +34,7 @@ class Promocoes extends Migration
      */
     public function down()
     {
-        //Deleta tabela Promocoes
-        Schema::dropIfExists('Promocoes');
+        //Exclusão Produtos
+        Schema::dropIfExists('Produtos');
     }
 }

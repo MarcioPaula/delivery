@@ -7,6 +7,7 @@ use App\Models\Promocoes;
 use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Auth;
 
 class PromocoesController extends Controller
 {
@@ -23,6 +24,12 @@ class PromocoesController extends Controller
 
         $dados = $request->all();
 
+        $dados =  array(
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'cod_estabel' => Auth::user()->cod_estabel,
+        );
+
         Promocoes::create($dados);
 
         return redirect()->back();
@@ -35,6 +42,12 @@ class PromocoesController extends Controller
         $promocao = Promocoes::find($id);
 
         $dados = $request->all();
+
+        $dados =  array(
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'cod_estabel' => Auth::user()->cod_estabel,
+        );
 
         $promocao->update($dados);
 

@@ -15,9 +15,7 @@
                 <table class="table align-items-center mb-0">
                     <thead>
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nome</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CEP</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Valor</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Editar | Excluir</th>
                     </tr>
@@ -26,13 +24,7 @@
                         @foreach($registros as $registro)
                             <tr>
                                 <td>
-                                    <P class="mb-0 text-sm">{{$registro->id}}</P>
-                                </td>
-                                <td>
                                     <p class="text-sm font-weight-bold mb-0">{{$registro->nome}}</p>
-                                </td>
-                                <td>
-                                    <p class="text-sm font-weight-bold mb-0">{{$registro->cep}}</p>
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <p class="text-sm text-uppercase font-weight-bold mb-0">{{$registro->valor}}</p>

@@ -16,7 +16,11 @@ class MeioPagamentos extends Migration
         //Meio pagamento
         Schema::create('Meios_pagamentos', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->string('nome');
+            $table->string('status');
+            $table->string('cod_estabel');
+
         });
     }
 

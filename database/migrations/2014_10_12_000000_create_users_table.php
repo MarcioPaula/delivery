@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('id_empresa');
+            $table->string('cod_estabel');
         });
     }
 

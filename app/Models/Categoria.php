@@ -10,7 +10,8 @@ class Categoria extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome_categoria'
+        'nome_categoria',
+        'cod_estabel'
     ];
 
 }

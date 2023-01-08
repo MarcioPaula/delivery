@@ -14,7 +14,7 @@ class Empresas extends Migration
     public function up()
     {
         //Cria Empresas
-        Schema::create('Empresas', function (Blueprint $table) {
+        Schema::create('Estabelecimento', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->string('cpf_cnpj')->nullable();
@@ -38,6 +38,6 @@ class Empresas extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('Empresas');
+        Schema::dropIfExists('Estabelecimento');
     }
 }

@@ -13,7 +13,7 @@
 
                     <div class="col-md-12" >
                         <div class="form-group">
-                            <label for="frete">Nome Frete</label>
+                            <label for="frete">Nome</label>
                             <input type="text" name="nome" autocomplete="off" required placeholder="Nome" class="form-control" value="{{isset($registro->nome)? $registro->nome : ''}}"/>
                         </div>
                     </div>

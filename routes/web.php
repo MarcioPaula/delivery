@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PagamentosController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ProdutosController;
 
 Route::get('/login', function () {
     return view('pages.user-pages.login');
@@ -27,7 +28,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/conectar', function () { return view('pages.conectar.conectar'); })->name('conectar.home');
     Route::get('pedidos', function () { return view('pages.pedidos.pedidos'); });
     Route::get('dashboard', function () { return view('pages.dashboard.dashboard'); });
-    Route::get('produtos', function () { return view('pages.produtos.produtos'); });
+
+    //Rotas de Produtos
+    Route::get('/produtos', [ProdutosController::class, 'index']);
+    Route::get('/produtos/delete{id}', [ProdutosController::class, 'deletar'])->name('produtos.delete');
+    Route::post('/produtos/add', [ProdutosController::class, 'adicionar'])->name('produtos.add');
+    Route::post('/produtos/edit{id}', [ProdutosController::class, 'editar'])->name('produtos.editar');
 
     //Rotas Usuarios
     Route::get('/usuarios', [UsuarioController::class, 'index']);
@@ -43,6 +49,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Rotas Pagamentos
     Route::get('/pagamentos', [PagamentosController::class, 'index'])->name('pagamentos');
+    Route::get('/pagamentos/delete{id}', [PagamentosController::class, 'deletar'])->name('pagamentos.delete');
+    Route::post('/pagamentos/add', [PagamentosController::class, 'adicionar'])->name('pagamentos.add');
+    Route::post('/pagamentos/edit{id}', [PagamentosController::class, 'editar'])->name('pagamentos.editar');
 
     //Rotas Promoções
     Route::get('/promocoes', [PromocoesController::class,'index']);
@@ -56,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/fretes/add', [FretesController::class,'adicionar'])->name('fretes.add');
     Route::post('/fretes/edit/{id}', [FretesController::class, 'editar'])->name('fretes.editar');
 
+    //Rotas de Suporte
     Route::get('/suporte', [ContactController::class,'index'])->name('pages.usuario.usuario');
     Route::post('/suporte', [ContactController::class,'store'])->name('pages.usuario.usuario');
 
