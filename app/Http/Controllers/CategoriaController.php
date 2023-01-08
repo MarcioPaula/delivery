@@ -3,51 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Promocoes;
+use App\Models\Categoria;
 use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
 
-class PromocoesController extends Controller
+class CategoriaController extends Controller
 {
-    //Apresenta Pagina Promoções com os dados em banco
+    //Apresenta Pagina Categoria com os dados em banco
     public function index(){
 
-        $registros = Promocoes::all();
+        $registros = Categoria::all();
 
-        return view("pages.promocoes.promocoes", compact("registros"));
+        return view("pages.categoria.categorias", compact("registros"));
     }
 
-    //Cria nova promoção no banco
+    //Cria nova Categoria no banco
     public function adicionar(Request $request){
 
         $dados = $request->all();
 
-        Promocoes::create($dados);
+        Categoria::create($dados);
 
         return redirect()->back();
 
     }
 
-    //Editar promoção no banco
+    //Editar Categoria no banco
     public function editar(Request $request, $id){
 
-        $promocao = Promocoes::find($id);
+        $categoria = Categoria::find($id);
 
         $dados = $request->all();
 
-        $promocao->update($dados);
+        $categoria->update($dados);
 
         return redirect()->back();
 
     }
 
-    //Excluir promoção no banco
+    //Excluir Categoria no banco
     public function deletar($id){
 
-        $Promocoes = Promocoes::find($id);
+        $categoria = Categoria::find($id);
 
-        $Promocoes->delete();
+        $categoria->delete();
 
         return redirect()->back();;
 

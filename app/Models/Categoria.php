@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fretes extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nome',
-        'valor'
+        'nome_categoria'
     ];
+
 }

@@ -7,7 +7,7 @@
             <div class="card-header pb-0">
                 <h6>Fretes</h6>
                 <br>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novo_frete">Novo Frete</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novo_frete">Incluir Frete</button>
                 @include('pages.fretes._modalAdd')
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -42,6 +42,8 @@
                                         <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_frete{{$registro->id}}">Editar</button>
                                         <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_frete{{$registro->id}}">Excluir</button>
                                     </div>
+                                    @include('pages.fretes._modalEditar')
+                                    @include('pages.fretes._modalEliminar')
                                 </td>
                             </tr>
                         @endforeach
@@ -51,8 +53,5 @@
         </div>
     </div>
 </div>
-
-{{-- @include('pages.fretes._modalEditar');
-@include('pages.fretes._modalEliminar') --}}
 
 @endsection

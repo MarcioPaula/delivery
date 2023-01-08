@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 //use App\Http\Controllers\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
@@ -18,6 +7,8 @@ use App\Http\Controllers\FretesController;
 use App\Http\Controllers\PromocoesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PagamentosController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\UsuarioController;
 
 Route::get('/login', function () {
     return view('pages.user-pages.login');
@@ -36,24 +27,34 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/conectar', function () { return view('pages.conectar.conectar'); })->name('conectar.home');
     Route::get('pedidos', function () { return view('pages.pedidos.pedidos'); });
     Route::get('dashboard', function () { return view('pages.dashboard.dashboard'); });
-    Route::get('usuarios', function () { return view('pages.usuarios.usuarios'); })->name('usuario.add');
     Route::get('produtos', function () { return view('pages.produtos.produtos'); });
-    Route::get('categorias', function () { return view('pages.categoria.categorias'); });
+
+    //Rotas Usuarios
+    Route::get('/usuarios', [UsuarioController::class, 'index']);
+    Route::get('/usuarios/delete{id}', [UsuarioController::class, 'deletar'])->name('usuario.delete');
+    Route::post('/usuarios/add', [UsuarioController::class, 'adicionar'])->name('usuario.add');
+    Route::post('/usuarios/edit{id}', [UsuarioController::class, 'editar'])->name('usuario.editar');
+
+    //Rotas Categorias
+    Route::get('/categorias', [CategoriaController::class, 'index']);
+    Route::get('/categorias/delete{id}', [CategoriaController::class, 'deletar'])->name('categoria.delete');
+    Route::post('/categorias/add', [CategoriaController::class, 'adicionar'])->name('categoria.add');
+    Route::post('/categorias/edit{id}', [CategoriaController::class, 'editar'])->name('categoria.editar');
 
     //Rotas Pagamentos
     Route::get('/pagamentos', [PagamentosController::class, 'index'])->name('pagamentos');
 
     //Rotas Promoções
     Route::get('/promocoes', [PromocoesController::class,'index']);
+    Route::get('/promocoes/delete{id}', [PromocoesController::class,'deletar'])->name('promocoes.delete');
     Route::post('/promocoes/add', [PromocoesController::class,'adicionar'])->name('promocoes.add');
     Route::post('/promocoes/edit{id}', [PromocoesController::class,'editar'])->name('promocoes.editar');
-    Route::post('/promocoes/delete{id}', [PromocoesController::class,'deletar'])->name('promocoes.delete');
 
     //Rotas de Fretes
     Route::get('/fretes', [FretesController::class,'index']);
+    Route::get('/fretes/delete/{id}', [FretesController::class, 'deletar'])->name('fretes.delete');
     Route::post('/fretes/add', [FretesController::class,'adicionar'])->name('fretes.add');
     Route::post('/fretes/edit/{id}', [FretesController::class, 'editar'])->name('fretes.editar');
-    Route::get('/fretes/delete/{id}', [FretesController::class, 'deletar'])->name('fretes.delete');
 
     Route::get('/suporte', [ContactController::class,'index'])->name('pages.usuario.usuario');
     Route::post('/suporte', [ContactController::class,'store'])->name('pages.usuario.usuario');

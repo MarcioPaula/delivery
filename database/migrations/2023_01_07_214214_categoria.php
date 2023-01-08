@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Fretes extends Migration
+class Categoria extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class Fretes extends Migration
      */
     public function up()
     {
-        Schema::create('Fretes', function (Blueprint $table) {
+        //Criação Categorias Produtos
+        Schema::create('Categorias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nome');
-            $table->string('valor');
+            $table->string('nome_categoria');
         });
     }
 
@@ -28,6 +28,8 @@ class Fretes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Fretes');
+        //Exclusão categoria
+        Schema::dropIfExists('Categorias');
+
     }
 }

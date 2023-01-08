@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Star Admin Premium Laravel Admin Dashboard Template</title>
+  <title>Sistema Delivery</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,14 +37,10 @@
     </div>
     <div class="col-12 col-md-8 h-100 bg-white">
       <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
-        <div class="nav-get-started">
-          <p>Don't have an account?</p>
-          <a class="btn get-started-btn" href="https://www.bootstrapdash.com/demo/star-laravel-pro/template/user-pages/register-2">GET STARTED</a>
-        </div>
         <form action="{{ route('login.auth') }}" method="POST">
             {{ csrf_field() }}
-          <h3 class="mr-auto">Hello! let's get started</h3>
-          <p class="mb-5 mr-auto">Enter your details below.</p>
+          <h3 class="mr-auto">Seja muito bem vindo!</h3>
+          <p class="mb-5 mr-auto">Introduza seus dados abaixo para Iniciar.</p>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-prepend">
@@ -52,7 +48,7 @@
                   <i class="mdi mdi-account-outline"></i>
                 </span>
               </div>
-              <input type="text" name="email" class="form-control" placeholder="Username">
+              <input type="text" name="email" class="form-control" placeholder="Nome de Usuário">
             </div>
           </div>
           <div class="form-group">
@@ -62,13 +58,13 @@
                   <i class="mdi mdi-lock-outline"></i>
                 </span>
               </div>
-              <input type="password" name="password" class="form-control" placeholder="Password">
+              <input type="password" name="password" class="form-control" placeholder="Senha">
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary submit-btn">Logar</button>
+            <button class="btn btn-primary submit-btn">Iniciar</button>
           </div>
-          <div class="wrapper mt-5 text-gray">
+          {{-- <div class="wrapper mt-5 text-gray">
             <p class="footer-text">Copyright © 2018 Bootstrapdash. All rights reserved.</p>
             <ul class="auth-footer text-gray">
               <li>
@@ -78,7 +74,7 @@
                 <a href="#">Cookie Policy</a>
               </li>
             </ul>
-          </div>
+          </div> --}}
         </form>
       </div>
     </div>

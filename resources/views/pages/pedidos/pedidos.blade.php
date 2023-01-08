@@ -1,23 +1,93 @@
 @extends('layout.master')
 @section('content')
 
-<div class="container">
-    <form class="form-inline" action="/home" method="POST">
-        {{ csrf_field() }}
-        <div class="form-group mb-2">
-            <label>Data Inicial:    </label>
-            <input type="date" class="form-control" name="fdate">
+<form class="form-inline" action="/home" method="POST">
+    {{ csrf_field() }}
+    <div class="form-group mb-2">
+        <label>Data Inicial:    </label>
+        <input type="date" class="form-control" name="fdate">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label>Data Final:    </label>
+        <input type="date" class="form-control" name="sdate">
+    </div>
+    <br>
+    <div class="form-group mx-sm-3 mb-2">
+        <label>Pendente:    </label>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" required>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label>Preparando:    </label>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" required>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label>Finalizado:    </label>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" required>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label>Cancelados:    </label>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" required>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="submit" value="Filtrar" class="btn btn-primary  form-control">
+    </div>
+</form>
+
+<div class="row mt-4 mx-4">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h6>Status de Pedidos</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <br class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nr Pedido</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Forma Pagamento</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Valor Total</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cliente</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Celular</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{-- @foreach($registros as $registro) --}}
+                            <tr>
+                                <td>
+                                    <label class="badge badge-info" _msthash="1298453" _msttexthash="113074">Em espera</label>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0"></p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0"></p>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <p class="text-sm text-uppercase font-weight-bold mb-0"></p>
+                                </td>
+                                <td class="align-middle text-end">
+                                    <div class="d-flex px-3 py-1 justify-content-center align-items-center">
+                                        <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_frete">Atualizar</button>
+                                        <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_frete">Cancelar</button>
+                                    </div>
+                                    {{-- @include('pages.fretes._modalEditar')
+                                    @include('pages.fretes._modalEliminar') --}}
+                                </td>
+                            </tr>
+                        {{-- @endforeach --}}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <label>Data Final:    </label>
-            <input type="date" class="form-control" name="sdate">
-        </div>
-        <input type="submit" value="Filtrar" class="btn btn-primary mb-2">
-    </form>
+    </div>
 </div>
 
 
-<div class="card-body">
+
+{{-- <div class="card-body">
     <div class="row grid-margin"><div class="col-12">
     </div>
 </div>
@@ -112,7 +182,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 {{-- <br>
 

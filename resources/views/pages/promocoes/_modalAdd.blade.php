@@ -1,5 +1,5 @@
 <div class="modal fade" id="nova_promocao" tabindex="-1" role="dialog" aria-labelledby="nova_promocaoLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="nova_promocaoLabel">Nova Promoção</h5>
@@ -19,8 +19,8 @@
                     </div>
 
                     <div class="col-md-12" >
-                        <label class="col-form-label" _msthash="2855450" _msttexthash="193947">Descrição</label>
-                        <textarea id="maxlength-textarea" name="descricao" maxlength="100" rows="2" placeholder="Digite aqui todas informações da Promoção" class="form-control" _mstplaceholder="1495351"></textarea>
+                        <label for="product">Descrição</label>
+                        <input type="text" name="descricao"  autocomplete="off" required placeholder="Digite aqui todas informações da Promoção" class="form-control">
                     </div>
                     <br>
                     <div class="modal-footer">

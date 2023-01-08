@@ -14,20 +14,20 @@
                     <div class="col-md-12" >
                         <div class="form-group">
                             <label for="frete">Nome Frete</label>
-                            <input type="text" name="nome" autocomplete="off" required placeholder="Nome Frete" class="form-control" value="{{isset($registro->nome)? $registro->nome : ''}}"/>
+                            <input type="text" name="nome" autocomplete="off" required placeholder="Nome" class="form-control" value="{{isset($registro->nome)? $registro->nome : ''}}"/>
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="frete">Valor Frete</label>
-                            <input type="text" name="valor" autocomplete="off" required placeholder="Valor Frete" class="form-control money2" value="{{isset($registro->valor)? $registro->valor : ''}}"/>
+                            <label for="frete">Valor</label>
+                            <input type="text" name="valor" autocomplete="off" required placeholder="Valor" class="form-control money2" value="{{isset($registro->valor)? $registro->valor : ''}}"/>
                         </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <input type="submit" class="btn btn-primary" value="Salvar">
+                        <button type="submit" class="btn btn-primary" value="Salvar">Salvar</button>
                     </div>
                 </form>
             </div>
