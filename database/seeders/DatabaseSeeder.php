@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\User;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +23,6 @@ class DatabaseSeeder extends Seeder
             'cod_estabel' => '1',
             'admin' => 'Sim'
         ]);
+
     }
 }

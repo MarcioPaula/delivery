@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cc69bd00-79b4-4025-9bcd-26b7ea146418" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/promocoes/_modalEditar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/promocoes/_modalEditar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/promocoes/promocoes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/promocoes/promocoes.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,16 +141,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/marcio.paula/Documents/Projetos/delivery_admin",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marcio.paula/Documents/Projetos/delivery_admin&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -165,7 +166,9 @@
       <option name="presentableId" value="Default" />
       <updated>1672763599845</updated>
       <workItem from="1672763601813" duration="1120000" />
-      <workItem from="1672936810459" duration="504000" />
+      <workItem from="1672936810459" duration="1104000" />
+      <workItem from="1673265788589" duration="181000" />
+      <workItem from="1673266010979" duration="5984000" />
     </task>
     <servers />
   </component>
