@@ -12,6 +12,7 @@ class Promocoes extends Model
     protected $fillable = [
         'titulo',
         'descricao',
+        'status',
         'cod_estabel'
     ];
 }

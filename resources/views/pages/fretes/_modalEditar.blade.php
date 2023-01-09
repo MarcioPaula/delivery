@@ -25,6 +25,19 @@
                         </div>
                     </div>
 
+                    <div class="col-md-12" >
+                        <div class="form-check">
+
+                            @if ($registro->status == "Ativo")
+                                <input class="form-check-input" type="checkbox" id="defaultCheck1" name="status" value="{{isset($registro->status)? $registro->status : ''}}" checked>
+                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do Frete</label>
+                            @else
+                                <input class="form-check-input" type="checkbox" id="defaultCheck1" name="status" value="{{isset($registro->status)? $registro->status : ''}}">
+                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do Frete </label>
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="submit" class="btn btn-primary" value="Salvar">Salvar</button>

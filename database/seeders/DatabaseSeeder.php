@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Willian',
             'email' => 'willian@hotmail.com',
             'password' => bcrypt('secret'),
-            'cod_estabel' => '1'
+            'cod_estabel' => '1',
+            'admin' => 'Sim'
         ]);
     }
 }

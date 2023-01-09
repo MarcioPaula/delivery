@@ -22,6 +22,14 @@
                         <label for="product">Descrição</label>
                         <input type="text" name="descricao"  autocomplete="off" required placeholder="Digite aqui todas as Informações da Promoção" class="form-control">
                     </div>
+
+                    <div class="col-md-12" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="status" checked>
+                            <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status da Promoção </label>
+                        </div>
+                    </div>
+
                     <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

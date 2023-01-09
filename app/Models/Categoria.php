@@ -11,6 +11,7 @@ class Categoria extends Model
 
     protected $fillable = [
         'nome_categoria',
+        'status',
         'cod_estabel'
     ];
 

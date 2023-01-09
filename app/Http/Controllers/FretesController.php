@@ -25,11 +25,21 @@ class FretesController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'nome' => $request->nome,
-            'valor' => $request->valor,
-            'cod_estabel' => Auth::user()->cod_estabel,
-        );
+        if($request->status == true){
+            $dados =  array(
+                'nome' => $request->nome,
+                'valor' => $request->valor,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }else {
+            $dados =  array(
+                'nome' => $request->nome,
+                'valor' => $request->valor,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }
 
         Fretes::create($dados);
 
@@ -43,11 +53,21 @@ class FretesController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'nome' => $request->nome,
-            'valor' => $request->valor,
-            'cod_estabel' => Auth::user()->cod_estabel,
-        );
+        if($request->status == true){
+            $dados =  array(
+                'nome' => $request->nome,
+                'valor' => $request->valor,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }else {
+            $dados =  array(
+                'nome' => $request->nome,
+                'valor' => $request->valor,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }
 
         $frete->update($dados);
         return redirect()->back();

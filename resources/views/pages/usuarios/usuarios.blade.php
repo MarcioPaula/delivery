@@ -17,6 +17,7 @@
                         <tr>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E-mail</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Admin</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Editar | Excluir</th>
                         </tr>
                     </thead>
@@ -28,6 +29,9 @@
                                 </td>
                                 <td>
                                     <P class="text-sm font-weight-bold mb-0">{{$registro->email}}</P>
+                                </td>
+                                <td>
+                                    <P class="text-sm font-weight-bold mb-0">{{$registro->admin}}</P>
                                 </td>
                                 <td class="align-middle text-end">
                                     <div class="d-flex px-3 py-1 justify-content-center align-items-center">

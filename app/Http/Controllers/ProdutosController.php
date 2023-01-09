@@ -28,15 +28,37 @@ class ProdutosController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'nome' => $request->nome,
-            'descricao' => $request->descricao,
-            'valor_unitario' => $request->valor_unitario,
-            'cod_estabel' => Auth::user()->cod_estabel,
-            'imagem' => $request->imagem,
-            'id_pedido' => 0,
-            'id_categoria' => $request->id_categoria,
-        );
+        if($request->status == true){
+            $dados =  array(
+                'nome' => $request->nome,
+                'descricao' => $request->descricao,
+                'valor_unitario' => $request->valor_unitario,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'id_categoria' => $request->id_categoria,
+            );
+        }else {
+            $dados =  array(
+                'nome' => $request->nome,
+                'descricao' => $request->descricao,
+                'valor_unitario' => $request->valor_unitario,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'id_categoria' => $request->id_categoria,
+            );
+        }
+
+        if ($request->hasFile('imagem'))
+        {
+            $arquivo = $request->file('imagem');
+            $num = $dados['nome'];
+            $dir = "img/products";
+            $ext = $arquivo->guessClientExtension();
+            $nomearquivo = "item_" . $num . "." . $ext;
+            $arquivo->move($dir, $nomearquivo);
+            $dados['imagem'] = $dir . "/" . $nomearquivo;
+
+        }
 
         Produtos::create($dados);
 
@@ -51,22 +73,37 @@ class ProdutosController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'nome' => $request->nome,
-            'descricao' => $request->descricao,
-            'valor_unitario' => $request->valor_unitario,
-            'cod_estabel' => Auth::user()->cod_estabel,
-            'imagem' => $request->imagem,
-            'id_pedido' => 0,
-            'id_categoria' => $request->id_categoria,
-        );
+        if($request->status == true){
+            $dados =  array(
+                'nome' => $request->nome,
+                'descricao' => $request->descricao,
+                'valor_unitario' => $request->valor_unitario,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'id_categoria' => $request->id_categoria,
+            );
+        }else {
+            $dados =  array(
+                'nome' => $request->nome,
+                'descricao' => $request->descricao,
+                'valor_unitario' => $request->valor_unitario,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'id_categoria' => $request->id_categoria,
+            );
+        }
 
+        if ($request->hasFile('imagem'))
+        {
+            $arquivo = $request->file('imagem');
+            $num = $dados['nome'];
+            $dir = "img/products";
+            $ext = $arquivo->guessClientExtension();
+            $nomearquivo = "item_" . $num . "." . $ext;
+            $arquivo->move($dir, $nomearquivo);
+            $dados['imagem'] = $dir . "/" . $nomearquivo;
 
-        $dados =  array(
-            'titulo' => $request->titulo,
-            'descricao' => $request->descricao,
-            'cod_estabel' => Auth::user()->cod_estabel,
-        );
+        }
 
         $produtos->update($dados);
 

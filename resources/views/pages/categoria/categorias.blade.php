@@ -15,6 +15,7 @@
                 <table class="table align-items-center mb-0">
                     <thead>
                         <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome Categoria</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Editar | Excluir</th>
                         </tr>
@@ -22,6 +23,9 @@
                     <tbody>
                         @foreach($registros as $registro)
                             <tr>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{$registro->status}}</p>
+                                </td>
                                 <td>
                                     <P class="text-sm font-weight-bold mb-0">{{$registro->nome_categoria}}</P>
                                 </td>

@@ -24,10 +24,19 @@ class CategoriaController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'nome_categoria' => $request->nome_categoria,
-            'cod_estabel' => Auth::user()->cod_estabel,
-        );
+        if($request->status == true){
+            $dados =  array(
+                'nome_categoria' => $request->nome_categoria,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }else {
+            $dados =  array(
+                'nome_categoria' => $request->nome_categoria,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }
 
         Categoria::create($dados);
 
@@ -41,6 +50,20 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
 
         $dados = $request->all();
+
+        if($request->status == true){
+            $dados =  array(
+                'nome_categoria' => $request->nome_categoria,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }else {
+            $dados =  array(
+                'nome_categoria' => $request->nome_categoria,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }
 
         $categoria->update($dados);
 

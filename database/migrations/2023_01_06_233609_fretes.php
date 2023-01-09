@@ -19,6 +19,7 @@ class Fretes extends Migration
             $table->string('nome');
             $table->string('valor');
             $table->string('cod_estabel');
+            $table->string('status');
         });
     }
 

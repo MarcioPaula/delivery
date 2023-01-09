@@ -21,7 +21,7 @@
                     <div class="col-md-12" >
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="status" checked>
-                            <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do pagamento </label>
+                            <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do Pagamento </label>
                         </div>
                     </div>
 

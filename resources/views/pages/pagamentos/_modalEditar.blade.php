@@ -26,7 +26,7 @@
                                 <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do pagamento</label>
                             @else
                                 <input class="form-check-input" type="checkbox" id="defaultCheck1" name="status" value="{{isset($registro->status)? $registro->status : ''}}">
-                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do pagamento </label>
+                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do Pagamento </label>
                             @endif
                         </div>
                     </div>

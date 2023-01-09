@@ -20,6 +20,7 @@ class Promocoes extends Migration
             $table->string('titulo');
             $table->string('descricao');
             $table->string('cod_estabel');
+            $table->string('status');
         });
     }
 

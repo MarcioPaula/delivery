@@ -24,11 +24,21 @@ class PromocoesController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'titulo' => $request->titulo,
-            'descricao' => $request->descricao,
-            'cod_estabel' => Auth::user()->cod_estabel,
-        );
+        if($request->status == true){
+            $dados =  array(
+                'titulo' => $request->titulo,
+                'descricao' => $request->descricao,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }else {
+            $dados =  array(
+                'titulo' => $request->titulo,
+                'descricao' => $request->descricao,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }
 
         Promocoes::create($dados);
 
@@ -43,11 +53,21 @@ class PromocoesController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'titulo' => $request->titulo,
-            'descricao' => $request->descricao,
-            'cod_estabel' => Auth::user()->cod_estabel,
-        );
+        if($request->status == true){
+            $dados =  array(
+                'titulo' => $request->titulo,
+                'descricao' => $request->descricao,
+                'status' => "Ativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }else {
+            $dados =  array(
+                'titulo' => $request->titulo,
+                'descricao' => $request->descricao,
+                'status' => "Inativo",
+                'cod_estabel' => Auth::user()->cod_estabel,
+            );
+        }
 
         $promocao->update($dados);
 

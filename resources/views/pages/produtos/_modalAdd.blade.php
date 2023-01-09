@@ -34,18 +34,28 @@
 
                     <div class="col-md-12">
                         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Categorias</label>
-                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="id_categoria">
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="id_categoria" style="width: 50%;">
                             @foreach ($categorias as $categoria)
-                                <option selected>{{$categoria->nome_categoria}}</option>
+                                @if ($categoria->status != "Inativo")
+                                    <option selected>{{$categoria->nome_categoria}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
 
                     <br>
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Escolher Imagem</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imagem">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="status" checked>
+                            <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status do Produto </label>
                         </div>
                     </div>
 

@@ -9,7 +9,7 @@
     <div class="row">
 
         <div class="col-md-6 jumbotron mx-auto">
-            <form action="{{ url('/menu/suporte') }}" method="POST">
+            <form action="{{ url('/suporte') }}" method="POST">
                 {{ csrf_field() }}
 
                 <div class="form-group">

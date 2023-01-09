@@ -19,6 +19,7 @@ class Categoria extends Migration
             $table->timestamps();
             $table->string('nome_categoria');
             $table->string('cod_estabel');
+            $table->string('status');
         });
     }
 

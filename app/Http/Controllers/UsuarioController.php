@@ -25,14 +25,23 @@ class UsuarioController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'cod_estabel' => Auth::user()->cod_estabel,
-
-        );
+        if($request->admin == true){
+            $dados =  array(
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'admin' => 'Sim'
+            );
+        }else {
+            $dados =  array(
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'admin' => 'Não'
+            );
+        }
 
         User::create($dados);
 
@@ -47,12 +56,23 @@ class UsuarioController extends Controller
 
         $dados = $request->all();
 
-        $dados =  array(
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'cod_estabel' => Auth::user()->cod_estabel,
-        );
+        if($request->admin == true){
+            $dados =  array(
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'admin' => 'Sim'
+            );
+        }else {
+            $dados =  array(
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'cod_estabel' => Auth::user()->cod_estabel,
+                'admin' => 'Não'
+            );
+        }
 
         $usuarios->update($dados);
 

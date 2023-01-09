@@ -22,8 +22,8 @@ class Produtos extends Migration
             $table->string('valor_unitario');
             $table->string('cod_estabel');
             $table->string('imagem')->nullable();
-            $table->string('id_pedido');
             $table->string('id_categoria');
+            $table->string('status');
         });
     }
 

@@ -17,5 +17,6 @@ class Produtos extends Model
         'imagem',
         'id_pedido',
         'id_categoria',
+        'status',
     ];
 }

@@ -29,6 +29,20 @@
                             <input type="password" name="password" autocomplete="off" required placeholder="Senha" class="form-control" value="{{isset($registro->password)? $registro->password : ''}}"/>
                         </div>
                     </div>
+
+                    <div class="col-md-12" >
+                        <div class="form-check">
+
+                            @if ($registro->admin == "Sim")
+                                <input class="form-check-input" type="checkbox" id="defaultCheck1" name="admin" value="{{isset($registro->admin)? $registro->admin : ''}}" checked>
+                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Administrador</label>
+                            @else
+                                <input class="form-check-input" type="checkbox" id="defaultCheck1" name="admin" value="{{isset($registro->admin)? $registro->admin : ''}}">
+                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Administrador </label>
+                            @endif
+                        </div>
+                    </div>
+
                     <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

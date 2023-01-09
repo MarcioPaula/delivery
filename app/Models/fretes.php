@@ -12,6 +12,7 @@ class fretes extends Model
     protected $fillable = [
         'nome',
         'valor',
+        'status',
         'cod_estabel',
     ];
 }

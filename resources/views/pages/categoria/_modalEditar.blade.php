@@ -17,6 +17,20 @@
                             <input type="text" name="nome_categoria" autocomplete="off" required placeholder="Categoria" class="form-control" value="{{isset($registro->nome_categoria)? $registro->nome_categoria : ''}}"/>
                         </div>
                     </div>
+
+                    <div class="col-md-12" >
+                        <div class="form-check">
+
+                            @if ($registro->status == "Ativo")
+                                <input class="form-check-input" type="checkbox" id="defaultCheck1" name="status" value="{{isset($registro->status)? $registro->status : ''}}" checked>
+                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status da Categoria</label>
+                            @else
+                                <input class="form-check-input" type="checkbox" id="defaultCheck1" name="status" value="{{isset($registro->status)? $registro->status : ''}}">
+                                <label class="form-check-label" for="defaultCheck1" _msthash="1496846" _msttexthash="550082"> Status da Categoria </label>
+                            @endif
+                        </div>
+                    </div>
+
                     <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
