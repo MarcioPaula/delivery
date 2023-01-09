@@ -6,6 +6,7 @@ use App\User;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,7 +22,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'willian@hotmail.com',
             'password' => bcrypt('secret'),
             'cod_estabel' => '1',
-            'admin' => 'Sim'
+            'admin' => 'Sim',
+            'api_token' =>'6MWqljFoJ44beKzPRS6fqXT4MJxUDzZQYWG1ZCJmONRyh6QWx1JCZt2SzVlU',
         ]);
 
     }
