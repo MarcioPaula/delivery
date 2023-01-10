@@ -1,68 +1,56 @@
 @extends('layout.master')
 @section('content')
 
-<div class="row mt-4 mx-4">
-    <div class="col-12">
-        <div class="card mb-4">
-            <div class="card-header pb-0">
-                <h6>Produtos</h6>
-                <br>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novo_produtos">Incluir Produto</button>
-                @include('pages.produtos._modalAdd')
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-                <br class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                    <thead>
+<div class="card-body">
+    <h4 class="card-title" _msthash="1771757" _msttexthash="77545">Produtos</h4>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novo_produtos">Incluir Produto</button>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th _msthash="3901040" _msttexthash="139581"> Imagem </th>
+                    <th _msthash="3901170" _msttexthash="153218"> Nome </th>
+                    <th _msthash="3901170" _msttexthash="153218"> Descrição </th>
+                    <th _msthash="3901170" _msttexthash="153218"> Preço Unitario </th>
+                    <th _msthash="3901170" _msttexthash="153218"> Categoria </th>
+                    <th _msthash="3901170" _msttexthash="153218"> Status </th>
+                    <th _msthash="3900910" _msttexthash="208377"> Editar | Excluir </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($registros as $registro)
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Imagem</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Descrição</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Preço</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Categoria</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Editar | Excluir</th>
+
+                        <td>
+                            <img src="{{$registro->imagem}}" class="avatar me-3" alt="image">
+                        </td>
+
+                        <td class="font-weight-medium" _msthash="3901170" _msttexthash="153218">{{$registro->nome}}</td>
+
+                        <td class="font-weight-medium" _msthash="3901170" _msttexthash="153218">{{$registro->descricao}}</td>
+
+                        <td class="font-weight-medium" _msthash="3901170" _msttexthash="153218">{{$registro->valor_unitario}}</td>
+
+                        <td class="font-weight-medium" _msthash="3901170" _msttexthash="153218">{{$registro->id_categoria}}</td>
+
+                        <td class="font-weight-medium" _msthash="3901170" _msttexthash="153218">{{$registro->status}}</td>
+
+                        <td class="align-middle text-end">
+                            <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="3900910" _msttexthash="208377" data-toggle="modal" data-target="#editar_produtos{{$registro->id}}">Editar</button>
+                            <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="3900910" _msttexthash="208377" data-toggle="modal" data-target="#excluir_produtos{{$registro->id}}">Excluir</button>
+
+                            @include('pages.produtos._modalEditar')
+                            @include('pages.produtos._modalEliminar')
+                        </td>
+
                     </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($registros as $registro)
-                            <tr>
-                                <td>
-                                    <div class="d-flex px-3 py-1">
-                                        <div>
-                                            <img src="{{$registro->imagem}}" class="avatar me-3" alt="image">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm">{{$registro->nome}}</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="text-sm font-weight-bold mb-0">{{$registro->descricao}}</p>
-                                </td>
-                                <td>
-                                    <p class="text-sm font-weight-bold mb-0">{{$registro->valor_unitario}}</p>
-                                </td>
-                                <td>
-                                    <p class="text-sm font-weight-bold mb-0">{{$registro->id_categoria}}</p>
-                                </td>
-                                <td>
-                                    <p class="text-sm font-weight-bold mb-0">{{$registro->status}}</p>
-                                </td>
-                                <td class="align-middle text-end">
-                                    <div class="d-flex px-3 py-1 justify-content-center align-items-center">
-                                        <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#editar_produtos{{$registro->id}}">Editar</button>
-                                        <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="812760" _msttexthash="176644" data-toggle="modal" data-target="#excluir_produtos{{$registro->id}}">Excluir</button>
-                                    </div>
-                                    @include('pages.produtos._modalEditar')
-                                    @include('pages.produtos._modalEliminar')
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
+
+@include('pages.produtos._modalAdd')
 
 @endsection

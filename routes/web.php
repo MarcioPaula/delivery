@@ -10,6 +10,7 @@ use App\Http\Controllers\PagamentosController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\PedidosController;
 
 Route::get('/login', function () {
     return view('pages.user-pages.login');
@@ -28,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/conectar', function () { return view('pages.conectar.conectar'); })->name('conectar.home');
     Route::get('pedidos', function () { return view('pages.pedidos.pedidos'); });
     Route::get('dashboard', function () { return view('pages.dashboard.dashboard'); });
+
+    //Rotas Pedidos
+    Route::get('/pedidos', [PedidosController::class, 'index']);
+    Route::get('/pedidos/detalhes{id}', [PedidosController::class, 'detalhes'])->name('pedidos.detalhar');
 
     //Rotas de Produtos
     Route::get('/produtos', [ProdutosController::class, 'index']);
