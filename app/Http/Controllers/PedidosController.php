@@ -15,52 +15,85 @@ class PedidosController extends Controller
     //Apresenta tela principal pedidos novos
     public function index(){
 
-        $registros = DB::table('pedidos')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
+        $registros = DB::table('pedidos')->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                                         ->where('status', '=', 'Inicial')
+                                         ->orWhere('status', '=', 'Preparando')
+                                         ->orWhere('status', '=', 'Entrega')->get();
 
         return view("pages.pedidos.pedidos" ,compact('registros'));
     }
 
     public function detalhes($id){
 
-        $registros = ped_item::all($id);
+        $peditem = DB::table('ped_item')->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                                         ->where('id_pedido', '=', $id)->get();
 
-        dd($registros);
-
-        // $pedidos = DB::table('pedidos')->where('cod_estabel', '=', Auth::user()->cod_estabel)
-        //                                  ->where('id', '=', $id)->get();
-
-        // $pedItem = DB::table('ped_item')->where('id_pedido', '=', $id)
-        //                                 ->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
-
-
-        // foreach ($pedItem as $item) {
-        //     dd($teste + 1);
+        // foreach($peditem as $item){
+        //     $celular = $item->celular;
         // }
 
-        // $produtos = DB::table('produtos')->where('id', '=', $pedItem->id_produtos)
-        //                                  ->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
+        // $clientes = DB::table('clientes')->where('cod_estabel', '=', Auth::user()->cod_estabel)
+        //                                  ->where('celular', '=', $celular)->get();
 
-        // $clientes = DB::table('clientes')->where('id', '=', $pedidos->nome_cliente)
-        //                                  ->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
+        $pedidos = DB::table('pedidos')->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                                       ->where('id', '=', $id)->get();
 
-        // foreach ($pedItem as $itens){
-        //     $item =  array(
-        //         'imagem' => $produtos->imagem,
-        //         'nome' => $produtos->nome,
-        //         'quantidade' => "10",
-        //         'pedido' => $id,
-        //         'meio_pagamento' => $pedido->meio_pagamento,
-        //         'valor_total' => $pedidos->valor_total,
-        //         'nome_cliente' => $clientes->nome,
-        //         'status' => $pedidos->status,
-        //         'celular' => $clientes->celular,
-        //     );
-        // }
-
-        // dd($item);
+        // $dados = array(
+        //     'id' => strval($pedidos[0]->id),
+        //     'valor_total' => $pedidos[0]->valor_total,
+        //     'meio_pagamento' => $pedidos[0]->meio_pagamento,
+        //     'status' => $pedidos[0]->status,
+        //     'nome' => $clientes[0]->nome,
+        //     'celular' => $clientes[0]->celular,
+        //     'rua' => $clientes[0]->rua,
+        //     'numero' => $clientes[0]->numero,
+        //     'cidade' => $clientes[0]->cidade,
+        // );
 
 
 
-        return view("pages.pedidos.detalhesDoPedido", compact("registros"));
+        return view("pages.pedidos.detalhesDoPedido", compact("peditem"),compact("pedidos"));
+    }
+
+    public function atualizar($id, $status){
+
+        if($status == "Inicial"){
+            $result = DB::table( 'pedidos' )
+                     ->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                     ->where('id', '=', $id)->update(['status' => "Preparando"]);
+
+        }
+
+        if($status == "Preparando"){
+            $result = DB::table( 'pedidos' )
+                     ->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                     ->where('id', '=', $id)->update(['status' => "Entrega"]);
+        }
+
+        $registros = DB::table('pedidos')->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                    ->where('status', '=', 'Inicial')
+                    ->orWhere('status', '=', 'Preparando')
+                    ->orWhere('status', '=', 'Entrega')->get();
+
+        return  redirect("pedidos");
+
+    }
+
+    public function cancelar($id){
+
+        $result = DB::table( 'pedidos' )
+                    ->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                    ->where('id', '=', $id)->update(['status' => "Cancelado"]);
+
+        return  redirect("pedidos");
+    }
+
+    public function finalizar($id){
+
+        $result = DB::table( 'pedidos' )
+                    ->where('cod_estabel', '=', Auth::user()->cod_estabel)
+                    ->where('id', '=', $id)->update(['status' => "Finalizado"]);
+
+        return redirect()->back();
     }
 }

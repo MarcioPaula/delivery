@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Clientes extends Migration
+class Conectar extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class Clientes extends Migration
      */
     public function up()
     {
-        //Cria Clientes
-        Schema::create('clientes', function (Blueprint $table) {
+        //Cria tabela de conexao
+        Schema::create('conecta_whats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('nome');
-            $table->string('celular');
-            $table->string('rua');
-            $table->string('numero');
-            $table->string('bairro');
-            $table->string('cep');
-            $table->string('cidade');
+            $table->string('departamento');
             $table->string('cod_estabel');
         });
     }
@@ -35,7 +30,7 @@ class Clientes extends Migration
      */
     public function down()
     {
-        //Exclui Clientes
-        Schema::dropIfExists('clientes');
+        //Exclui tabela conectar
+        Schema::dropIfExists('conecta_whats');
     }
 }

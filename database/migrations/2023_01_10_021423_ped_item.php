@@ -20,6 +20,12 @@ class PedItem extends Migration
             $table->string('id_produtos');
             $table->string('cod_estabel');
             $table->string('id_pedido');
+            $table->string('nome_cliente');
+            $table->string('celular');
+            $table->string('nome_produto');
+            $table->string('descricao');
+            $table->string('imagem')->nullable();
+            $table->string('valor_unitario');
         });
     }
 

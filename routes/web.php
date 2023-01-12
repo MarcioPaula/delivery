@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\ConectarController;
 
 Route::get('/login', function () {
     return view('pages.user-pages.login');
@@ -26,13 +27,21 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/usuarios/add', [DashboardController::class, 'adicionar'])->name('usuarios.add');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout.login');
-    Route::get('/conectar', function () { return view('pages.conectar.conectar'); })->name('conectar.home');
     Route::get('pedidos', function () { return view('pages.pedidos.pedidos'); });
     Route::get('dashboard', function () { return view('pages.dashboard.dashboard'); });
 
+    Route::get('/conectar', [ConectarController::class, 'index'])->name('conectar.home');
+    Route::get('/conectar/delete{id}', [ConectarController::class, 'deletar'])->name('conectar.delete');
+    Route::post('/conectar/add', [ConectarController::class, 'adicionar'])->name('conectar.add');
+    Route::post('/conectar/edit{id}', [ConectarController::class, 'editar'])->name('conectar.editar');
+    Route::get('/conectar/qrcode{id}', [ConectarController::class, 'conectarQrcode'])->name('conectar.qrcode');
+
     //Rotas Pedidos
+    Route::get('/pedidos/finalizar{id}', [PedidosController::class, 'finalizar'])->name('pedidos.finalizar');
     Route::get('/pedidos', [PedidosController::class, 'index']);
-    Route::get('/pedidos/detalhes{id}', [PedidosController::class, 'detalhes'])->name('pedidos.detalhar');
+    Route::get('/pedidos/detalhes/pedido{id}', [PedidosController::class, 'detalhes'])->name('pedidos.detalhar');
+    Route::get('/pedidos/{status}/{id}', [PedidosController::class, 'atualizar'])->name('pedidos.atualizar');
+    Route::get('/pedidos/cancelar{id}', [PedidosController::class, 'cancelar'])->name('pedidos.cancelar');
 
     //Rotas de Produtos
     Route::get('/produtos', [ProdutosController::class, 'index']);

@@ -1,12 +1,57 @@
 @extends('layout.master')
 
-@push('plugin-styles')
+{{-- @push('plugin-styles')
   <!-- {!! Html::style('/assets/plugins/plugin.css') !!} -->
-@endpush
+@endpush --}}
 
 @section('content')
 
-<style>
+<div class="card-body">
+    <h4 class="card-title" _msthash="1771757" _msttexthash="77545">Conectar WhatsApp</h4>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nova_conexao">Nova Conexão</button>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th _msthash="3901040" _msttexthash="139581"> Nome </th>
+                    <th _msthash="3901170" _msttexthash="153218"> Departamento </th>
+                    <th _msthash="3900910" _msttexthash="208377"> Conectar-se</th>
+                    <th _msthash="3900910" _msttexthash="208377"> Editar | Excluir </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($registros as $registro)
+                    <tr>
+
+                        <td class="font-weight-medium" _msthash="3901040" _msttexthash="139581">{{$registro->nome}}</td>
+
+                        <td class="font-weight-medium" _msthash="3901170" _msttexthash="153218">{{$registro->departamento}}</td>
+
+                        <td>
+                            <a href="{{route('conectar.qrcode', $registro->id)}}">
+                            <button type="button"> <img src="{{ url('assets/images/faces/qrcode.jpg') }}" /></button>
+                        </td>
+
+                        <td class="align-middle text-end">
+                            <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="3900910" _msttexthash="208377" data-toggle="modal" data-target="#editar_conexao{{$registro->id}}">Editar</button>
+                            <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="3900910" _msttexthash="208377" data-toggle="modal" data-target="#excluir_conexao{{$registro->id}}">Excluir</button>
+
+                            @include('pages.conectar._modalEditar')
+                            @include('pages.conectar._modalEliminar')
+                        </td>
+
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@include('pages.conectar._modalAdd')
+@endsection
+
+{{-- <style>
     .client {
         border: 1px solid #ccc;
         padding: 20px;
@@ -159,10 +204,9 @@
             document.location.reload(true);
         });
     });
-</script>
+</script> --}}
 
-@endsection
-
+{{--
 @push('plugin-scripts')
   {!! Html::script('/assets/plugins/chartjs/chart.min.js') !!}
   {!! Html::script('/assets/plugins/jquery-sparkline/jquery.sparkline.min.js') !!}
@@ -170,4 +214,4 @@
 
 @push('custom-scripts')
   {!! Html::script('/assets/js/dashboard.js') !!}
-@endpush
+@endpush --}}
