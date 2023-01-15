@@ -1,9 +1,5 @@
 @extends('layout.master')
 
-{{-- @push('plugin-styles')
-  <!-- {!! Html::style('/assets/plugins/plugin.css') !!} -->
-@endpush --}}
-
 @section('content')
 
 <div class="card-body">
@@ -17,21 +13,36 @@
                     <th _msthash="3901040" _msttexthash="139581"> Nome </th>
                     <th _msthash="3901170" _msttexthash="153218"> Departamento </th>
                     <th _msthash="3900910" _msttexthash="208377"> Conectar-se</th>
+                    <th _msthash="3900910" _msttexthash="208377"> Desconectar-se</th>
                     <th _msthash="3900910" _msttexthash="208377"> Editar | Excluir </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($registros as $registro)
                     <tr>
+                        <td class="font-weight-medium" _msthash="3901040" _msttexthash="139581">{{$registro->nome}}
+                            <input value="{{$registro->nome}}" hidden type="text" id="client-id">
+                        </td>
 
-                        <td class="font-weight-medium" _msthash="3901040" _msttexthash="139581">{{$registro->nome}}</td>
-
-                        <td class="font-weight-medium" _msthash="3901170" _msttexthash="153218">{{$registro->departamento}}</td>
+                        <td class="font-weight-medium departamento" _msthash="3901170" _msttexthash="153218">{{$registro->departamento}}
+                            <input value="{{$registro->departamento}}" hidden type="text" id="client-token">
+                        </td>
 
                         <td>
-                            <a href="{{route('conectar.qrcode', $registro->id)}}">
-                            <button type="button"> <img src="{{ url('assets/images/faces/qrcode.jpg') }}" /></button>
+                            <div class="check">
+                                <button class="add-client-btn" type="button" data-toggle="modal" data-target="#cria_conexao" value="{{$registro->nome}}">
+                                    <img src="{{ asset('assets/images/faces/qrcode.jpg')}}" id="img" data-valor="{{$registro->nome}}"/>
+                                </button>
+                            </div>
                         </td>
+                        @include('pages.conectar._modalConectar')
+
+                        <td>
+                            <button class="destroy-client-btn" type="button" data-toggle="modal" data-target="#desconectar" value="{{$registro->nome}}">
+                                <img src="{{ asset('img/desconectar.jpg')}}" id="img" data-valor="{{$registro->nome}}"/>
+                            </button>
+                        </td>
+                        @include('pages.conectar._modalDesconectar')
 
                         <td class="align-middle text-end">
                             <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="3900910" _msttexthash="208377" data-toggle="modal" data-target="#editar_conexao{{$registro->id}}">Editar</button>
@@ -40,7 +51,6 @@
                             @include('pages.conectar._modalEditar')
                             @include('pages.conectar._modalEliminar')
                         </td>
-
                     </tr>
                 @endforeach
             </tbody>
@@ -49,169 +59,158 @@
 </div>
 
 @include('pages.conectar._modalAdd')
-@endsection
-
-{{-- <style>
-    .client {
-        border: 1px solid #ccc;
-        padding: 20px;
-        box-sizing: border-box;
-        display: inline-block;
-        margin: 10px;
-    }
-    .hide {
-        display: none;
-    }
-</style>
-
-<div id="app">
-    <div class="row">
-        <center>
-            <div class="col">
-                <div class="form-group mb-3">
-                    <h4>Criar Conexão</h4>
-                    <label for="client-idd"></label><br>
-                    <input type="text" id="client-id" placeholder="Nome Usuário">
-                </div>
-                <div class="form-group mb-3 ">
-                    <label for="client-token"></label><br>
-                    <input rows="3" id="client-token" placeholder="Nome Departamento">
-                    <br><br>
-
-                    <button class="add-client-btn btn-primary">Conectar</button>
-
-                </div>
-            </div>
-        </center>
-        <center>
-            <div class="col">
-                <div class="form-group mb-3">
-                    <h4>Eliminar Conexão</h4>
-                    <label for="client-id"></label><br>
-                    <input type="text" id="client-idd" placeholder="Nome Usuário">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="client-tokenn"></label><br>
-                    <input rows="3" id="client-tokenn" placeholder="Nome Departamento">
-                    <br><br>
-
-                    <button class="destroy-client-btn btn-danger">Eliminar QRCode</button>
-                </div>
-            </div>
-        </center>
-    </div>
-
-    <hr>
-    <div class="client-container">
-        <div class="client hide">
-            <h3 class="title"></h3>
-            <p class="token"></p>
-            <img src="" alt="QR Code" id="qrcode">
-            <h3>Status:</h3>
-            <ul class="logs"></ul>
-            <br>
-        </div>
-    </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 
 <script>
 
+    //Inicia Logica Utilizando Jquery
     $(document).ready(function() {
 
-        var socket = io('https://api.alavancaweb.com.br/');
+        //Variaveis Globais Jqury
+        var socket = io('http://localhost:8001'); //Conecta com API externa
+        var check = 'img/check.svg';              //Salva imagem de check
+        var index_nome = -0;                      //Salva valor da posição do array que o nome está
 
+        //Evento quando clica no botão para conectar
         $('.add-client-btn').click(function() {
+
+            //Variaveis do evento .add-client-btn
             var clientId = $('#client-id').val();
             var clientToken = $('#client-token').val();
-
             var clientClass = 'client-' + clientId;
-            var template = $('.client').first().clone()
-                                       .removeClass('hide')
+
+            //Verifica se já existe conexão, caso exista não permite criar novamente obs.................ajustar essa parte ainda
+            if($('.client').hasClass(clientClass)){
+                //Não faz nada
+            }else{
+                //Clona template atual, alterando para gif de carregando(Está sendo tratado dentro do _modalConectar)
+                var template = $('.client').first().clone()
+                                       .attr('style', 'display: flex')
                                        .addClass(clientClass);
+                $('.client-container').append(template);
 
-            template.find('.title').html(clientId);
-            template.find('.token').html(clientToken);
-            $('.client-container').append(template);
-
-            socket.emit('create-session', {
-                id: clientId,
-                token: clientToken
-            });
+                //Envia para API nome e dapartamento da conexão(estes dados ficam salvos em um array dentro da api)
+                socket.emit('create-session', {
+                    id: clientId,
+                    token: clientToken
+                });
+            }
         });
 
-        socket.on('init', function(data) {
-            $('.client-container .client').not(':first').remove();
-                for (var i = 0; i < data.length; i++) {
-                    var session = data[i];
+        //Limpa conexão do array da API e desconecta aparelho( precisa de testes e revisões)
+        $('.modal-footer #desconectar-conexao').click(function() {
 
-                    var clientId = session.id;
-                    var clientToken = session.token;
-
-                    var clientClass = 'client-' + clientId;
-                    var template = $('.client').first().clone()
-                                            .removeClass('hide')
-                                            .addClass(clientClass);
-
-                    template.find('.title').html(clientId);
-                    template.find('.token').html(clientToken);
-                    $('.client-container').append(template);
-
-                    if (session.ready) {
-                        $(`.client.${clientClass} .logs`).append($('<li>').text('Dispositivo está pronto!'));
-                    } else {
-                        $(`.client.${clientClass} .logs`).append($('<li>').text('Conectando...'));
-                    }
-                }
-        });
-
-        socket.on('remove-session', function(id) {
-            $(`.client.client-${id}`).remove();
-        });
-
-        socket.on('message', function(data) {
-            $(`.client.client-${data.id} .logs`).append($('<li>').text(data.text));
-        });
-
-        socket.on('message-group', function(data) {
-            $(`.client.client-${data.id} .logs-group`).append($('<li>').text(data.text));
-        });
-
-        socket.on('qr', function(data) {
-            $(`.client.client-${data.id} #qrcode`).attr('src', data.src);
-            $(`.client.client-${data.id} #qrcode`).show();
-        });
-
-        socket.on('ready', function(data) {
-            $(`.client.client-${data.id} #qrcode`).hide();
-        });
-
-        socket.on('authenticated', function(data) {
-            $(`.client.client-${data.id} #qrcode`).hide();
-        });
-
-        $('.destroy-client-btn').click(function() {
-            var clientId = $('#client-idd').val();
-            var clientToken = $('#client-tokenn').val();
+            var clientId = $('#client-id').val();
+            var clientToken = $('#client-token').val();
 
             socket.emit('destroy-session',{
                 id: clientId,
                 token: clientToken
             });
 
+            socket.emit('disconnected', {
+                id: clientId,
+                token: clientToken
+            });
+
             document.location.reload(true);
         });
-    });
-</script> --}}
 
-{{--
-@push('plugin-scripts')
-  {!! Html::script('/assets/plugins/chartjs/chart.min.js') !!}
-  {!! Html::script('/assets/plugins/jquery-sparkline/jquery.sparkline.min.js') !!}
-@endpush
+        //Recebe nome e departamento da conexão toda vez que a tela é atualizada
+        socket.on('init', function(data) {
 
-@push('custom-scripts')
-  {!! Html::script('/assets/js/dashboard.js') !!}
-@endpush --}}
+            //Contador para pegar as posições de cada conexão conectada no array da API
+            for (var i = 0; i < data.length; i++) {
+
+                //Variaveis do contador FOR
+                var session = data[i];              //Salva todos os dados de cada posição do array
+                var clientId = session.id;          //Salva apenas o nome
+                var clientToken = session.token;    //Salva apenas o departamento
+
+                //Evento para percorrer cada registro existente na tela e pegar sua posição no array(index)
+                $(".font-weight-medium #client-id").each(function (index, value) {
+                    if(clientId == value.value)
+                    index_nome = index;
+                });
+
+                //Evento para percorrer cada imagem da tela e comparando o index do array de imagens com o index do array de nomes, altera a imagem do botão para check
+                $(".check #img").each(function (index, value) {
+
+                    if(index == index_nome){
+                        value.src = 'img/check.svg';
+                    }
+                });
+            }
+        });
+
+        //Ainda não sei muito bem o que essa função está fazendo na API
+        socket.on('remove-session', function(id) {
+            $(`.client.client-${id}`).remove();
+        });
+
+        //Retorna mensagem vinda da API no momento não está retornada nada, mais futuramente poderemos utilizar
+        socket.on('message', function(data) {
+        });
+
+        //Ainda não sei muito bem o que essa função está fazendo na API
+        socket.on('message-group', function(data) {
+        });
+
+        //Recebe nome da conexão salva no array da api + imagem que será mostrada em tela para conexão
+        socket.on('qr', function(data) {
+
+            //Variaveis evento qrcode
+            var index_nome = -0;        //Salva a posição que o index está no array, inicia com -0 para não dar erro
+
+            //Altera imagem do gif carregando para imagem do qrcode vinda da API
+            $(`.client #qrcode`).attr('src', data.src);
+            $(`.client #qrcode`).show();
+
+            //se a imagem vinda da API for check quer dizer que está conexão já está conectada, então faz a alteração da imagem para check
+            if(data.src == "img/check.svg"){
+
+                //Evento para percorrer cada registro existente na tela e pegar sua posição no array(index)
+                $(".font-weight-medium #client-id").each(function (index, value) {
+                    if(data.id == value.value)
+                    index_nome = index;
+                });
+
+                //Evento para percorrer cada imagem da tela e comparando o index do array de imagens com o index do array de nomes, altera a imagem do botão para check
+                $(".check #img").each(function (index, value) {
+                    if(index == index_nome){
+
+                        value.src = 'img/check.svg';
+                    }
+                });
+
+                //Inicia Delay de 1 segundo para alterar imagem do qrcode para check
+                let i = 0
+
+                const timer = setInterval(function() {
+                if (i >= 1) {
+                    clearInterval(timer) //aborta a execução caso a condição seja atingida
+                }
+
+                i++
+                    //Fecha o modal quando o tempo de 1 segundo seja atendido
+                    $('#cria_conexao').modal('hide');
+                }, 2000)
+            }
+        });
+
+        //Recebe informações de conectado da API mais ainda não está sendo utilizado
+        socket.on('ready', function(data) {
+        });
+
+        //Recebe informações de authenticado da API mais ainda não está sendo utilizado
+        socket.on('authenticated', function(data) {
+        });
+
+
+    }); //Finaliza Logica Jquery
+
+</script>
+
+@endsection

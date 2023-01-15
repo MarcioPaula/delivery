@@ -28,28 +28,8 @@ class PedidosController extends Controller
         $peditem = DB::table('ped_item')->where('cod_estabel', '=', Auth::user()->cod_estabel)
                                          ->where('id_pedido', '=', $id)->get();
 
-        // foreach($peditem as $item){
-        //     $celular = $item->celular;
-        // }
-
-        // $clientes = DB::table('clientes')->where('cod_estabel', '=', Auth::user()->cod_estabel)
-        //                                  ->where('celular', '=', $celular)->get();
-
         $pedidos = DB::table('pedidos')->where('cod_estabel', '=', Auth::user()->cod_estabel)
                                        ->where('id', '=', $id)->get();
-
-        // $dados = array(
-        //     'id' => strval($pedidos[0]->id),
-        //     'valor_total' => $pedidos[0]->valor_total,
-        //     'meio_pagamento' => $pedidos[0]->meio_pagamento,
-        //     'status' => $pedidos[0]->status,
-        //     'nome' => $clientes[0]->nome,
-        //     'celular' => $clientes[0]->celular,
-        //     'rua' => $clientes[0]->rua,
-        //     'numero' => $clientes[0]->numero,
-        //     'cidade' => $clientes[0]->cidade,
-        // );
-
 
 
         return view("pages.pedidos.detalhesDoPedido", compact("peditem"),compact("pedidos"));
@@ -79,7 +59,7 @@ class PedidosController extends Controller
 
     }
 
-    public function cancelar($id){
+    public function cancelar(Request $request, $id){
 
         $result = DB::table( 'pedidos' )
                     ->where('cod_estabel', '=', Auth::user()->cod_estabel)

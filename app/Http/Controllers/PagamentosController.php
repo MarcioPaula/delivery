@@ -15,7 +15,7 @@ class PagamentosController extends Controller
     //Apresenta nome dos pagamentos
     public function index(){
 
-      $registros = DB::table('meios_pagamentos')->get();
+      $registros = DB::table('meios_pagamentos')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
       return view("pages.pagamentos.pagamentos", compact('registros'));
     }

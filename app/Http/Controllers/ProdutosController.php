@@ -16,9 +16,9 @@ class ProdutosController extends Controller
     //Apresenta Pagina Produtos com os dados em banco
     public function index(){
 
-        $registros = Produtos::all();
+        $registros = DB::table('produtos')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
-        $categorias = Categoria::all();
+        $categorias = DB::table('categorias')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
         return view("pages.produtos.produtos", compact("registros"),compact("categorias"));
     }

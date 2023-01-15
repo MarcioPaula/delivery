@@ -79,7 +79,7 @@
                             <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left"><i aria-hidden="true"
                                 class="mdi mdi-bookmark-outline mr-1"></i>
 
-                                <font _mstmutation="1" _msthash="1712633" _msttexthash="584818"> Pedido Entregue </font>
+                                <font _mstmutation="1" _msthash="1712633" _msttexthash="584818"> Pedido saiu para Entrega </font>
                             </p>
                             <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left"><i aria-hidden="true"
                                     class="mdi mdi-bookmark-outline mr-1"></i>

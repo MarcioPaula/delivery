@@ -14,7 +14,7 @@ class CategoriaController extends Controller
     //Apresenta Pagina Categoria com os dados em banco
     public function index(){
 
-        $registros = Categoria::all();
+        $registros = DB::table('categorias')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
         return view("pages.categoria.categorias", compact("registros"));
     }

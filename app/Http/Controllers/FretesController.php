@@ -14,7 +14,7 @@ class FretesController extends Controller
     //Função inicial que busca todos os fretes cadastrados
     public function index (){
 
-        $registros = Fretes::all();
+        $registros = DB::table('fretes')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
         return view("pages.fretes.fretes",compact('registros'));
 

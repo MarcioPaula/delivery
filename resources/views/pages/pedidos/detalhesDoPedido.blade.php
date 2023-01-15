@@ -18,9 +18,9 @@
         <a href="{{route('pedidos.atualizar', [$peditem[0]->id_pedido, $pedidos[0]->status])}}">
             <button type="button" class="btn btn-success">Atualizar</button>
         </a>
-        <a href="{{route('pedidos.cancelar', $peditem[0]->id_pedido)}}">
-            <button type="submit" class="btn btn-danger">Cancelar</button>
-        </a>
+
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pedido_preparando{{$peditem[0]->id_pedido}}">Rejeitar</button>
+        @include('pages.pedidos._modalRejeitarPedido')
         <br><br>
         <table class="table table-striped">
             <thead>

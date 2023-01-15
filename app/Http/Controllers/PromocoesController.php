@@ -14,7 +14,7 @@ class PromocoesController extends Controller
     //Apresenta Pagina Promoções com os dados em banco
     public function index(){
 
-        $registros = Promocoes::all();
+        $registros = DB::table('promocoes')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
         return view("pages.promocoes.promocoes", compact("registros"));
     }

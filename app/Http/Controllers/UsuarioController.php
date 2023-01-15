@@ -15,7 +15,7 @@ class UsuarioController extends Controller
     //Apresenta Pagina Usuarios com os dados em banco
     public function index(){
 
-        $registros = User::all();
+        $registros = DB::table('users')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
         return view("pages.usuarios.usuarios", compact("registros"));
     }

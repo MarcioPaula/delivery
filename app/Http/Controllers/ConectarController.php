@@ -14,7 +14,7 @@ class ConectarController extends Controller
     //Função retorna todas as conexões criadas no banco
     public function index(){
 
-        $registros = conecta_whats::all();
+        $registros = DB::table('conecta_whats')->where('cod_estabel', '=', Auth::user()->cod_estabel)->get();
 
 
         return view("pages.conectar.conectar",compact('registros'));
