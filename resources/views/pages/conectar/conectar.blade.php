@@ -13,7 +13,6 @@
                     <th _msthash="3901040" _msttexthash="139581"> Nome </th>
                     <th _msthash="3901170" _msttexthash="153218"> Departamento </th>
                     <th _msthash="3900910" _msttexthash="208377"> Conectar-se</th>
-                    <th _msthash="3900910" _msttexthash="208377"> Desconectar-se</th>
                     <th _msthash="3900910" _msttexthash="208377"> Editar | Excluir </th>
                 </tr>
             </thead>
@@ -30,26 +29,20 @@
 
                         <td>
                             <div class="check">
-                                <button class="add-client-btn" type="button" data-toggle="modal" data-target="#cria_conexao" value="{{$registro->nome}}">
+                                <button class="add-client-btn" type="button" data-toggle="modal" data-target="#cria_conexao{{$registro->id}}" value="{{$registro->nome}}">
                                     <img src="{{ asset('assets/images/faces/qrcode.jpg')}}" id="img" data-valor="{{$registro->nome}}"/>
                                 </button>
                             </div>
                         </td>
                         @include('pages.conectar._modalConectar')
 
-                        <td>
-                            <button class="destroy-client-btn" type="button" data-toggle="modal" data-target="#desconectar" value="{{$registro->nome}}">
-                                <img src="{{ asset('img/desconectar.jpg')}}" id="img" data-valor="{{$registro->nome}}"/>
-                            </button>
-                        </td>
-                        @include('pages.conectar._modalDesconectar')
-
                         <td class="align-middle text-end">
-                            <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="3900910" _msttexthash="208377" data-toggle="modal" data-target="#editar_conexao{{$registro->id}}">Editar</button>
-                            <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="3900910" _msttexthash="208377" data-toggle="modal" data-target="#excluir_conexao{{$registro->id}}">Excluir</button>
-
-                            @include('pages.conectar._modalEditar')
-                            @include('pages.conectar._modalEliminar')
+                            <div class="editar-eliminar">
+                                <button type="button" class="btn btn-inverse-dark btn-sm ml-2" _msthash="3900910" _msttexthash="208377" id="editar" data-toggle="modal" data-target="#editar_conexao{{$registro->id}}">Editar</button>
+                                <button type="button" class="btn btn-inverse-danger btn-sm ml-2" _msthash="3900910" _msttexthash="208377" id="eliminar" data-toggle="modal" data-target="#excluir_conexao{{$registro->id}}">Excluir</button>
+                            </div>
+                                @include('pages.conectar._modalEditar')
+                                @include('pages.conectar._modalEliminar')
                         </td>
                     </tr>
                 @endforeach
@@ -99,24 +92,27 @@
             }
         });
 
+        $('.editar-eliminar #editar').click(function(){
+            alert("teste")
+        })
+
+        $('.editar-eliminar #eliminar').click(function(){
+            alert("teste")
+        })
+
         //Limpa conexão do array da API e desconecta aparelho( precisa de testes e revisões)
-        $('.modal-footer #desconectar-conexao').click(function() {
+        // $('.modal-footer #desconectar-conexao').click(function() {
 
-            var clientId = $('#client-id').val();
-            var clientToken = $('#client-token').val();
+        //     var clientId = $('#client-id').val();
+        //     var clientToken = $('#client-token').val();
 
-            socket.emit('destroy-session',{
-                id: clientId,
-                token: clientToken
-            });
+        //     socket.emit('destroy-session',{
+        //         id: clientId,
+        //         token: clientToken
+        //     });
 
-            socket.emit('disconnected', {
-                id: clientId,
-                token: clientToken
-            });
-
-            document.location.reload(true);
-        });
+        //     document.location.reload(true);
+        // });
 
         //Recebe nome e departamento da conexão toda vez que a tela é atualizada
         socket.on('init', function(data) {
@@ -147,11 +143,27 @@
 
         //Ainda não sei muito bem o que essa função está fazendo na API
         socket.on('remove-session', function(id) {
-            $(`.client.client-${id}`).remove();
+            //Variaveis evento qrcode
+            var index_nome = -0;        //Salva a posição que o index está no array, inicia com -0 para não dar erro
+
+            //Evento para percorrer cada registro existente na tela e pegar sua posição no array(index)
+            $(".font-weight-medium #client-id").each(function (index, value) {
+                if(id == value.value)
+                index_nome = index;
+            });
+
+            //Evento para percorrer cada imagem da tela e comparando o index do array de imagens com o index do array de nomes, altera a imagem do botão para check
+            $(".check #img").each(function (index, value) {
+                if(index == index_nome){
+
+                    value.src = 'assets/images/faces/qrcode.jpg';
+                }
+            });
         });
 
         //Retorna mensagem vinda da API no momento não está retornada nada, mais futuramente poderemos utilizar
         socket.on('message', function(data) {
+            console.log(data)
         });
 
         //Ainda não sei muito bem o que essa função está fazendo na API
